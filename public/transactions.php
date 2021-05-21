@@ -6,16 +6,14 @@
         <th scope="col">#</th>
         <th scope="col">Payment Type</th>
         <th scope="col">Amount</th>
-        <th scope="col">Handle</th>
+    </tr>
+    <tr v-for="(trans,index) in transactions">
+        <td>{{index + 1}}</td>
+        <td>{{ trans.fee_type }}</td>
+       <td>{{ trans.amount }}</td>
     </tr>
     </thead>
     <tbody>
-    <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
-    </tr>
 
     </tbody>
 </table>
@@ -36,8 +34,14 @@
 
         methods: {
             loadTransaction: function () {
-                axios.get('/api/transactions').then(function (response) {
+                let self = this;
+                axios.get('/api/transactions', {
+                    headers: {
+                        'Authorization': 'Bearer ' + localStorage.getItem("token")
+                    }
+                }).then(function (response) {
                     console.log(response);
+                    self.transactions = response.data
                 })
                     .catch(function (error) {
                         console.log(error);

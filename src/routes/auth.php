@@ -7,7 +7,7 @@ use \Psr\Http\Message\ResponseInterface as Response;
 //require "../../src/config/db.php";
 $app = new \Slim\App;
 
-function generateToken($studentId)
+function generateToken($studentId): string
 {
     $now = time();
     $future = strtotime('+3 hour', $now);
