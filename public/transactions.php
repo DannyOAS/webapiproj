@@ -34,20 +34,20 @@
         },
         mounted(){
             this.loadTransaction();
-            //test
+
 
         },
 
         methods: {
             loadTransaction: function () {
-                let self = this;
+                const self = this;
                 axios.get('/api/transactions', {
                     headers: {
                         'Authorization': 'Bearer ' + localStorage.getItem("token")
                     }
                 }).then(function (response) {
                     console.log(response);
-                    self.transactions = response.data
+                    self.transactions = response.data.data
                 })
                     .catch(function (error) {
                         console.log(error);
