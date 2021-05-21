@@ -34,6 +34,8 @@
         },
         mounted(){
             this.loadTransaction();
+            //test
+
         },
 
         methods: {
