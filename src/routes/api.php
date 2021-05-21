@@ -26,14 +26,19 @@ $app->get('/api/transactions', function (Request $request, Response $response, a
 
 
 $app->post('/api/make-payment', function (Request $request, Response $response, array $args) {
-    $secretKey = 'sk_test_f67db477aeacf65fe448dac9b485a3639a95c031';
-    $Transaction = new Transaction( $secretKey);
-    $response =
-        $Transaction
-            ->setCallbackUrl('http://michaelakanji.com') // to override/set callback_url, it can also be set on your dashboard
-            ->setEmail( 'matscode@gmail.com' )
-            ->setAmount( 75000 ) // amount is treated in Naira while using this method
-            ->initialize();
+    $db = new db();
+    // Connect
+    $db = $db->connect();
+    $query = $db->prepare("INSERT INTO transactions(reference_no, fee_type, payment_type, amount) VALUES (reference_no, fee_type, payment_type, amount)");
+    $query->bindParam("reference_no", $request->getParsedBody()["reference_no"], PDO::PARAM_STR);
+    $query->bindParam("fee_type", $request->getParsedBody()["fee_type"], PDO::PARAM_STR);
+    $query->bindParam("payment_type", $request->getParsedBody()["payment_type"], PDO::PARAM_STR);
+    $query->bindParam("amount", $request->getParsedBody()["amount"], PDO::PARAM_STR);
 
+
+    $query->execute();
+    return $db->lastInsertId();
+
+    print_r($request->getParsedBody());
     return $response->withJSON(array("hi"=>"j"));
 });

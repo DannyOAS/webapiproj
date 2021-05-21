@@ -27,7 +27,6 @@ $app->post('/api/token', function (Request $request, Response $response, array $
     $id = $request->getParsedBody()['id'];
     $pin = $request->getParsedBody()['pin'];
 
-    $sql = "SELECT * FROM students WHERE student_id = $id && pin=$pin";
 
     try {
         // Get DB Object
