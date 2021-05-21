@@ -27,11 +27,13 @@ $app->get('/api', function (Request $request, Response $response) {
 });
 
 
+require "../src/routes/api.php";
+require "../src/routes/auth.php";
 
 
 $app->add(new Tuupola\Middleware\JwtAuthentication([
     "secret" => OAUTH_SECTRET_KEY,
-    "ignore" => ["/api/token"],//This allows clients to get oauth token
+    "ignore" => ["/api/token", "/api/transactions","/api/login"],//This allows clients to get oauth token
     "algorithm" => ["HS256", "HS384"],
     "attribute" => "AuthUser",
 
@@ -40,11 +42,9 @@ $app->add(new Tuupola\Middleware\JwtAuthentication([
         $data["status"] = "error";
         $data["message"] = $arguments["message"];
 
-
         return $response
             ->withJson($data);
     }
 ]));
-require "../src/routes/auth.php";
-require "../src/routes/api.php";
+
 $app->run();

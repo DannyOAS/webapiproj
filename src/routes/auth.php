@@ -5,7 +5,7 @@ use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
 
 //require "../../src/config/db.php";
-$app = new \Slim\App;
+//$app = new \Slim\App;
 
 function generateToken($studentId): string
 {
@@ -51,6 +51,5 @@ $app->post('/api/token', function (Request $request, Response $response, array $
     } catch (PDOException $e) {
         echo '{"error": {"text": ' . $e->getMessage() . '}';
     }
-
 });
 
