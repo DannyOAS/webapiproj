@@ -16,9 +16,9 @@ $app->get('/api/transactions', function (Request $request, Response $response, a
     $db = $db->connect();
     $sth = $db->prepare("SELECT * FROM transactions");
     $sth->execute();
-    $trans = $sth->fetchAll(PDO::FETCH_OBJ);
+    $trans = $sth->fetchAll();
 
-    return $this->response->withJson(array("data"=> $trans), 200,JSON_PRETTY_PRINT);
+    return $this->response->withJson(array("data"=> $trans));
 
 });
 
