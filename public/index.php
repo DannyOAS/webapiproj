@@ -4,7 +4,8 @@ use \Psr\Http\Message\ResponseInterface as Response;
 require '../vendor/autoload.php';
 require '../src/config/db.php';
 
-define("OAUTH_SECTRET_KEY","DMID@(ldldq-U*U@)IKKDMMKAMJNIU#JO$");
+define("OAUTH_SECTRET_KEY", "DMID@(ldldq-U*U@)IKKDMMKAMJNIU#JO$");
+
 $app = new \Slim\App;
 $app->options('/{routes:.+}', function ($request, $response, $args) {
     return $response;
@@ -26,12 +27,10 @@ $app->get('/api', function (Request $request, Response $response) {
 });
 
 
-require "../src/routes/auth.php";
-require "../src/routes/api.php";
+
 
 $app->add(new Tuupola\Middleware\JwtAuthentication([
     "secret" => OAUTH_SECTRET_KEY,
-    //"header" => "X-Token",//Subsequent request will need to have a X-token
     "ignore" => ["/api/token"],//This allows clients to get oauth token
     "algorithm" => ["HS256", "HS384"],
     "attribute" => "AuthUser",
@@ -46,5 +45,6 @@ $app->add(new Tuupola\Middleware\JwtAuthentication([
             ->withJson($data);
     }
 ]));
-
+require "../src/routes/auth.php";
+require "../src/routes/api.php";
 $app->run();

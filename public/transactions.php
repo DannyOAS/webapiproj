@@ -5,11 +5,13 @@
     <tr>
         <th scope="col">#</th>
         <th scope="col">Payment Type</th>
+        <th scope="col">Reference</th>
         <th scope="col">Amount</th>
     </tr>
     <tr v-for="(trans,index) in transactions">
         <td>{{index + 1}}</td>
         <td>{{ trans.fee_type }}</td>
+        <td>{{ trans.reference_no }}</td>
        <td>{{ trans.amount }}</td>
     </tr>
     </thead>

@@ -10,7 +10,7 @@ $app = new \Slim\App;
 function generateToken($studentId): string
 {
     $now = time();
-    $future = strtotime('+3 hour', $now);
+    $future = strtotime('+6 hour', $now);
     $secret = OAUTH_SECTRET_KEY;
 
     $payload = [
@@ -26,7 +26,6 @@ function generateToken($studentId): string
 $app->post('/api/token', function (Request $request, Response $response, array $args) {
     $id = $request->getParsedBody()['id'];
     $pin = $request->getParsedBody()['pin'];
-
 
     try {
         // Get DB Object
