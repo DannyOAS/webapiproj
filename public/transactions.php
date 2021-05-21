@@ -34,8 +34,6 @@
         },
         mounted(){
             this.loadTransaction();
-
-
         },
 
         methods: {
@@ -47,7 +45,7 @@
                     }
                 }).then(function (response) {
                     console.log(response);
-                    self.transactions = response.data.data
+                    self.transactions = response.data.data;
                 })
                     .catch(function (error) {
                         console.log(error);
