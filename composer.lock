@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "509c41530f60793d4575b31595e323f1",
+    "content-hash": "a2bb19b93ad06269c6ccc78dbe59974d",
     "packages": [
         {
             "name": "firebase/php-jwt",
@@ -59,6 +59,49 @@
                 "source": "https://github.com/firebase/php-jwt/tree/v5.2.1"
             },
             "time": "2021-02-12T00:02:00+00:00"
+        },
+        {
+            "name": "matscode/paystack-php-sdk",
+            "version": "v1.9.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/matscode/paystack-php-sdk.git",
+                "reference": "423460ed6cdf7a0dd7ab638f04eda0dec44782a6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/matscode/paystack-php-sdk/zipball/423460ed6cdf7a0dd7ab638f04eda0dec44782a6",
+                "reference": "423460ed6cdf7a0dd7ab638f04eda0dec44782a6",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Matscode\\Paystack\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GNU GPLv3"
+            ],
+            "authors": [
+                {
+                    "name": "Michael Akanji",
+                    "email": "matscode@gmail.com",
+                    "homepage": "http://michaelakanji.com"
+                }
+            ],
+            "description": "This package is for communicating with PAYSTACK API",
+            "keywords": [
+                "payment",
+                "paystack",
+                "php"
+            ],
+            "support": {
+                "issues": "https://github.com/matscode/paystack-php-sdk/issues",
+                "source": "https://github.com/matscode/paystack-php-sdk/tree/v1.9.1"
+            },
+            "time": "2017-07-10T14:27:10+00:00"
         },
         {
             "name": "nikic/fast-route",
