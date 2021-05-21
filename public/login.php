@@ -51,6 +51,8 @@
                     pin: this.pin
                 }).then(function (response) {
                     console.log(response);
+                    if(!response.data['token'])
+                        return window.location.replace('/login.php')
                     localStorage.setItem("token", response.data['token'])
                     window.location.replace('/transactions.php')
                 })
